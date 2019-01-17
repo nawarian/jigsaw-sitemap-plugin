@@ -1,0 +1,14 @@
+{
+    "name": "nawarian/jigsaw-sitemap-plugin",
+    "description": "A sitemap generator plugin for Tightenco's Jigsaw",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nawarian",
+            "email": "nickolas@phpsp.org.br"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
