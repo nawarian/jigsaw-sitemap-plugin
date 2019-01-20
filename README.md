@@ -18,12 +18,12 @@ $ composer require nawarian/jigsaw-sitemap-plugin
 On your `bootstrap.php` file, register the Listener:
 
 ```php
-use Nawarian\JigsawSitemapPlugin\Listener\ListenerInterface;
+use Nawarian\JigsawSitemapPlugin\Listener\SitemapListener;
 
 /** @var $container \Illuminate\Container\Container */
 /** @var $events \TightenCo\Jigsaw\Events\EventBus */
 
-$events->afterBuild($container->make(ListenerInterface::class));
+$events->afterBuild([SitemapListener::class]);
 ```
 
 After running the build you should see a `sitemap.xml` file
