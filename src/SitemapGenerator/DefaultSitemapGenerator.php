@@ -3,36 +3,26 @@
 namespace Nawarian\JigsawSitemapPlugin\SitemapGenerator;
 
 use Nawarian\JigsawSitemapPlugin\Config\BaseUrl;
+use Nawarian\JigsawSitemapPlugin\Config\DestinationPath;
 use Nawarian\JigsawSitemapPlugin\SitemapGenerator\LastModified\LastModifiedStrategy;
 use samdark\sitemap\Sitemap;
 use TightenCo\Jigsaw\Jigsaw;
 
 class DefaultSitemapGenerator implements GeneratorInterface
 {
-    /**
-     * @var BaseUrl
-     */
-    private $baseUrl;
-
-    /**
-     * @var LastModifiedStrategy
-     */
-    private $lastModifiedGenerator;
-
-    /**
-     * @var Sitemap
-     */
-    private $sitemap;
-
-    public function __construct(BaseUrl $baseUrl, LastModifiedStrategy $lastModifiedGenerator, Sitemap $sitemap)
-    {
-        $this->baseUrl = $baseUrl;
-        $this->lastModifiedGenerator = $lastModifiedGenerator;
-        $this->sitemap = $sitemap;
-    }
-
     public function generate(Jigsaw $app): void
     {
+        $baseUrl = BaseUrl::createFromString($app->getConfig('baseUrl'));
+        $lastModifiedGeneratorClass = $app->getConfig('sitemap.lastModifiedStrategy')
+            ?? LastModifiedStrategy::class;
+        /** @var LastModifiedStrategy $lastModifiedGenerator */
+        $lastModifiedGenerator = $app->app->make($lastModifiedGeneratorClass);
+        $destinationPath = DestinationPath::createFromString(
+            $app->getDestinationPath(),
+            'sitemap.xml'
+        );
+        $sitemap = new Sitemap((string) $destinationPath);
+
         collect($app->getOutputPaths())
             ->sortBy(function (string $path) {
                 return $path;
@@ -45,12 +35,12 @@ class DefaultSitemapGenerator implements GeneratorInterface
                     '*/404',
                 ]);
             })
-            ->each(function ($path) {
-                $url = rtrim((string) $this->baseUrl, '/') . $path;
-                $lastModified = $this->lastModifiedGenerator->getLastModifiedTime($path);
-                $this->sitemap->addItem($url, $lastModified, Sitemap::MONTHLY);
+            ->each(function ($path) use ($baseUrl, $lastModifiedGenerator, $sitemap) {
+                $url = rtrim((string) $baseUrl, '/') . $path;
+                $lastModified = $lastModifiedGenerator->getLastModifiedTime($path);
+                $sitemap->addItem($url, $lastModified, Sitemap::MONTHLY);
             });
 
-        $this->sitemap->write();
+        $sitemap->write();
     }
 }

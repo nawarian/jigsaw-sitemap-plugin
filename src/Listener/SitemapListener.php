@@ -2,23 +2,23 @@
 
 namespace Nawarian\JigsawSitemapPlugin\Listener;
 
+use Nawarian\JigsawSitemapPlugin\SitemapGenerator\DefaultSitemapGenerator;
 use Nawarian\JigsawSitemapPlugin\SitemapGenerator\GeneratorInterface;
 use TightenCo\Jigsaw\Jigsaw;
 
 class SitemapListener implements ListenerInterface
 {
-    /**
-     * @var GeneratorInterface
-     */
-    private $sitemapGenerator;
-
-    public function __construct(GeneratorInterface $sitemapGenerator)
-    {
-        $this->sitemapGenerator = $sitemapGenerator;
-    }
+    const DEFAULT_SITEMAP_STRATEGY = DefaultSitemapGenerator::class;
 
     public function handle(Jigsaw $app): void
     {
-        $this->sitemapGenerator->generate($app);
+        $generatorClassName = $app->getConfig('sitemap.strategy') ?? self::DEFAULT_SITEMAP_STRATEGY;
+        if (!class_exists($generatorClassName)) {
+            $generatorClassName = self::DEFAULT_SITEMAP_STRATEGY;
+        }
+
+        /** @var GeneratorInterface $generatorStrategy */
+        $generatorStrategy = new $generatorClassName();
+        $generatorStrategy->generate($app);
     }
 }
