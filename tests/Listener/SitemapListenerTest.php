@@ -2,6 +2,7 @@
 
 namespace Nawarian\JigsawSitemapPlugin\Listener;
 
+use Nawarian\JigsawSitemapPlugin\Config\BaseUrl;
 use Nawarian\JigsawSitemapPlugin\SitemapGenerator\DefaultSitemapGenerator;
 use Nawarian\JigsawSitemapPlugin\SitemapGenerator\GeneratorInterface;
 use Nawarian\JigsawSitemapPlugin\SitemapGenerator\LastModified\ImmutableCurrentTimeGenerator;
@@ -47,7 +48,8 @@ class SitemapListenerTest extends TestCase
             )
             ->willReturn(null);
 
-        $generator = new DefaultSitemapGenerator($app, $lastModifiedDateGenerator, $sitemap);
+        $baseUrl = BaseUrl::createFromString($app->getConfig(DefaultSitemapGenerator::BASE_URL_KEY));
+        $generator = new DefaultSitemapGenerator($baseUrl, $lastModifiedDateGenerator, $sitemap);
         $listener = new SitemapListener($generator);
         $listener->handle($app);
     }

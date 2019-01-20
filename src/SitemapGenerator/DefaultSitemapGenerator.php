@@ -24,9 +24,9 @@ class DefaultSitemapGenerator implements GeneratorInterface
      */
     private $sitemap;
 
-    public function __construct(Jigsaw $app, LastModifiedStrategy $lastModifiedGenerator, Sitemap $sitemap)
+    public function __construct(BaseUrl $baseUrl, LastModifiedStrategy $lastModifiedGenerator, Sitemap $sitemap)
     {
-        $this->baseUrl = BaseUrl::createFromString($app->getConfig(self::BASE_URL_KEY));
+        $this->baseUrl = $baseUrl;
         $this->lastModifiedGenerator = $lastModifiedGenerator;
         $this->sitemap = $sitemap;
     }
