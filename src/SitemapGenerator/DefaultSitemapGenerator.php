@@ -1,9 +1,9 @@
 <?php
 
-namespace Nawarian\SitemapGenerator;
+namespace Nawarian\JigsawSitemapPlugin\SitemapGenerator;
 
-use Nawarian\Config\BaseUrl;
-use Nawarian\SitemapGenerator\LastModified\LastModifiedStrategy;
+use Nawarian\JigsawSitemapPlugin\Config\BaseUrl;
+use Nawarian\JigsawSitemapPlugin\SitemapGenerator\LastModified\LastModifiedStrategy;
 use samdark\sitemap\Sitemap;
 use TightenCo\Jigsaw\Jigsaw;
 

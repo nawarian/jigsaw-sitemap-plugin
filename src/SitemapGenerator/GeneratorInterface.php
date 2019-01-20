@@ -1,6 +1,6 @@
 <?php
 
-namespace Nawarian\SitemapGenerator;
+namespace Nawarian\JigsawSitemapPlugin\SitemapGenerator;
 
 use TightenCo\Jigsaw\Jigsaw;
 

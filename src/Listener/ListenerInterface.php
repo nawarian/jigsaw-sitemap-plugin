@@ -1,6 +1,6 @@
 <?php
 
-namespace Nawarian\Listener;
+namespace Nawarian\JigsawSitemapPlugin\Listener;
 
 use TightenCo\Jigsaw\Jigsaw;
 

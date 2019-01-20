@@ -1,8 +1,8 @@
 <?php
 
-namespace Nawarian\Listener;
+namespace Nawarian\JigsawSitemapPlugin\Listener;
 
-use Nawarian\SitemapGenerator\GeneratorInterface;
+use Nawarian\JigsawSitemapPlugin\SitemapGenerator\GeneratorInterface;
 use TightenCo\Jigsaw\Jigsaw;
 
 class SitemapListener implements ListenerInterface

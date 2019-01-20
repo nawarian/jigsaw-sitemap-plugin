@@ -1,6 +1,6 @@
 <?php
 
-namespace Nawarian\Config;
+namespace Nawarian\JigsawSitemapPlugin\Config;
 
 use PHPUnit\Framework\TestCase;
 

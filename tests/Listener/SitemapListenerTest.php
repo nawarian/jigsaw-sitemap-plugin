@@ -1,10 +1,10 @@
 <?php
 
-namespace Nawarian\Listener;
+namespace Nawarian\JigsawSitemapPlugin\Listener;
 
-use Nawarian\SitemapGenerator\DefaultSitemapGenerator;
-use Nawarian\SitemapGenerator\GeneratorInterface;
-use Nawarian\SitemapGenerator\LastModified\ImmutableCurrentTimeGenerator;
+use Nawarian\JigsawSitemapPlugin\SitemapGenerator\DefaultSitemapGenerator;
+use Nawarian\JigsawSitemapPlugin\SitemapGenerator\GeneratorInterface;
+use Nawarian\JigsawSitemapPlugin\SitemapGenerator\LastModified\ImmutableCurrentTimeGenerator;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use samdark\sitemap\Sitemap;

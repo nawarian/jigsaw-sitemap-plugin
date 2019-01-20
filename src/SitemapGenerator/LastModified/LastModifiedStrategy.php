@@ -1,6 +1,6 @@
 <?php
 
-namespace Nawarian\SitemapGenerator\LastModified;
+namespace Nawarian\JigsawSitemapPlugin\SitemapGenerator\LastModified;
 
 interface LastModifiedStrategy
 {

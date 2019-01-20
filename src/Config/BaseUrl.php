@@ -1,6 +1,6 @@
 <?php
 
-namespace Nawarian\Config;
+namespace Nawarian\JigsawSitemapPlugin\Config;
 
 class BaseUrl
 {

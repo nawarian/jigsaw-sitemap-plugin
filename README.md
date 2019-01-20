@@ -18,7 +18,7 @@ $ composer require nawarian/jigsaw-sitemap-plugin
 On your `bootstrap.php` file, register the Listener:
 
 ```php
-use Nawarian\Listener\ListenerInterface;
+use Nawarian\JigsawSitemapPlugin\Listener\ListenerInterface;
 
 /** @var $container \Illuminate\Container\Container */
 /** @var $events \TightenCo\Jigsaw\Events\EventBus */
