@@ -52,7 +52,7 @@ class SitemapListenerTest extends TestCase
         $listener->handle($app);
     }
 
-    private function createMockWithDisabledConstructor(string $class, string ...$methods): MockObject
+    private function createMockWithDisabledConstructor(string $class, string ...$methods)
     {
         return $this->getMockBuilder($class)
             ->disableOriginalConstructor()
