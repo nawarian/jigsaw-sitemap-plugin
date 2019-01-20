@@ -4,6 +4,7 @@ namespace Nawarian\JigsawSitemapPlugin\SitemapGenerator;
 
 use Nawarian\JigsawSitemapPlugin\Config\BaseUrl;
 use Nawarian\JigsawSitemapPlugin\Config\DestinationPath;
+use Nawarian\JigsawSitemapPlugin\SitemapGenerator\LastModified\ImmutableCurrentTimeGenerator;
 use Nawarian\JigsawSitemapPlugin\SitemapGenerator\LastModified\LastModifiedStrategy;
 use samdark\sitemap\Sitemap;
 use TightenCo\Jigsaw\Jigsaw;
@@ -14,7 +15,7 @@ class DefaultSitemapGenerator implements GeneratorInterface
     {
         $baseUrl = BaseUrl::createFromString($app->getConfig('baseUrl'));
         $lastModifiedGeneratorClass = $app->getConfig('sitemap.lastModifiedStrategy')
-            ?? LastModifiedStrategy::class;
+            ?? ImmutableCurrentTimeGenerator::class;
         /** @var LastModifiedStrategy $lastModifiedGenerator */
         $lastModifiedGenerator = $app->app->make($lastModifiedGeneratorClass);
         $destinationPath = DestinationPath::createFromString(
