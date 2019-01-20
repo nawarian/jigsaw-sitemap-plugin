@@ -30,11 +30,11 @@ class DefaultSitemapGenerator implements GeneratorInterface
             }, SORT_DESC, true)
             ->reject(function ($path) {
                 // @todo add proper blacklist component
-                return in_array($path, [
+                return str_is([
                     '/assets/*',
                     '*/favicon.ico',
                     '*/404',
-                ]);
+                ], $path);
             })
             ->each(function ($path) use ($baseUrl, $lastModifiedGenerator, $sitemap) {
                 $url = rtrim((string) $baseUrl, '/') . $path;
