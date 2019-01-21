@@ -1,6 +1,7 @@
 Jigsaw Sitemap Plugin
 ----
 [![Build Status](https://travis-ci.org/nawarian/jigsaw-sitemap-plugin.svg?branch=master)](https://travis-ci.org/nawarian/jigsaw-sitemap-plugin)
+[![codecov](https://codecov.io/gh/nawarian/jigsaw-sitemap-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/nawarian/jigsaw-sitemap-plugin)
 
 Jigsaw Sitemap Plugin is an easy and straight forward plugin
 to be used on Jigsaw's `afterBuild` event.
